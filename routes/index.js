@@ -17,6 +17,11 @@ module.exports = function (app) {
 
 	app.route('/')
 		.get( function (req, res) {
-			res.sendFile(path + '/public/index.html');
+			res.render("index", {"baseUrl": process.env.APP_URL});
+		});
+		
+	app.route('*')
+		.get( function (req, res) {
+			res.render("index", {"baseUrl": process.env.APP_URL});
 		});
 };
